@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class PostSeeder extends Seeder
 {
@@ -18,24 +19,32 @@ class PostSeeder extends Seeder
                 'image' => 'user/images/barbell-front-squat-218x150.jpg',
                 'content' => 'Công thức làm khoai lang + đậu đen kiểu Mexico để ăn tăng cân',
                 'category_id' => 4,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],[
                 'title' => 'Câu chuyện hét giá 177 triệu tiền tập gym và bài học cho các bạn PT',
                 'description' => 'Câu chuyện hét giá 177 triệu tiền tập gym và bài học cho các bạn PT',
                 'image' => 'user/images/barbell-front-squat-218x150.jpg',
                 'content' => 'Câu chuyện hét giá 177 triệu tiền tập gym và bài học cho các bạn PT',
                 'category_id' => 4,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],[
                 'title' => '4 lý do nên tập toàn thân bên cạnh các ngày tập riêng từng nhóm cơ',
                 'description' => '4 lý do nên tập toàn thân bên cạnh các ngày tập riêng từng nhóm cơ',
                 'image' => 'user/images/barbell-front-squat-218x150.jpg',
                 'content' => '4 lý do nên tập toàn thân bên cạnh các ngày tập riêng từng nhóm cơ',
                 'category_id' => 4,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],[
                 'title' => 'Thủ tướng Canada Trudeau chạy bộ ở kênh Nhiêu Lộc gây bất ngờ cho người dân',
                 'description' => 'Thủ tướng Canada Trudeau chạy bộ ở kênh Nhiêu Lộc gây bất ngờ cho người dân',
                 'image' => 'user/images/barbell-front-squat-218x150.jpg',
                 'content' => 'Thủ tướng Canada Trudeau chạy bộ ở kênh Nhiêu Lộc gây bất ngờ cho người dân',
                 'category_id' => 4,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ]
         ]);
     }

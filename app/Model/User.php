@@ -9,6 +9,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public $timestamps = false;
     const ADMIN = 1;
     const COACH = 2;
     const MEMBER = 3;

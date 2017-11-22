@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Model\Category;
 use App\Model\Excercise;
@@ -89,5 +90,15 @@ class HomeController extends UserController
         $musics = Music::paginate(6,['*'], 'music');
 
         return View::make('user.include.music_content', ['category' => $category, 'musics' => $musics])->render();
+    }
+
+    public function searchTitle(Request $request)
+    {
+        $search_input = $request->search_input;
+        $excercise_results = Excercise::where('title', 'like', '%' . $search_input . '%')->get();
+        $post_results = Post::where('title', 'like', '%' . $search_input . '%')->get();
+        $music_results = Music::where('title', 'like', '%' . $search_input . '%')->get();
+
+        return view('user.pages.search_result', compact('search_input', 'excercise_results', 'post_results', 'music_results'));
     }
 }

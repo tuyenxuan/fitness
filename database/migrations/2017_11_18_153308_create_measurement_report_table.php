@@ -13,10 +13,10 @@ class CreateMeasurementReportTable extends Migration
      */
     public function up()
     {
-        Schema::create('measurement_report', function (Blueprint $table) {
+        Schema::create('measurement_reports', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('letter_id')->unsigned();
-            $table->foreign('letter_id')->references('id')->on('letters');
+            $table->integer('report_id')->unsigned();
+            $table->foreign('report_id')->references('id')->on('reports');
             $table->integer('measurement_id')->unsigned();
             $table->foreign('measurement_id')->references('id')->on('measurements');
             $table->integer('measure');
@@ -32,6 +32,6 @@ class CreateMeasurementReportTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('measurement_report');
+        Schema::dropIfExists('measurement_reports');
     }
 }

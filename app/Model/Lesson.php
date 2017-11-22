@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
-        'letter_id', 'excercise_id', 'time', 'description'
+        'user_id', 'date', 'excercise_id', 'time', 'description'
     ];
 }
