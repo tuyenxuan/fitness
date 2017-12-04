@@ -14,10 +14,17 @@ use App\Model\CoachSchedule;
 use App\Model\Report;
 use App\Model\User;
 use App\Model\MeasurementReport;
+use App\Model\WebInfo;
 use Illuminate\Support\Facades\Auth;
 
 class CoachController extends Controller
 {
+    function __construct()
+    {
+        $title = WebInfo::where('label', 'title')->first();
+        View::share('title', $title);
+    }
+
     public function showDasboard()
     {
         $coach_id = Auth::user()->id;
@@ -174,7 +181,7 @@ class CoachController extends Controller
         $excercise = new Excercise();
         $excercise->title = $request->title;
         $excercise->category_id = $request->category_id;
-        $excercise->video_link = $request->video_link;
+        $excercise->video_link = explode('?v=', $request->video_link, 11)[1];
         $excercise->content = $request->content;
         $excercise->description = $request->description;
         $excercise->image = 'user/images/' . $input['imagename'];

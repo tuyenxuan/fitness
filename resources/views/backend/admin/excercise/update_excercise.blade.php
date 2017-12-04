@@ -40,7 +40,7 @@
                         Link video
                     </div>
                     <div class="col-md-9">
-                        <input type="text" name="video_link" class="input" value="{{ $excercise->video_link }}" required>
+                        <input type="text" name="video_link" class="input" value="https://www.youtube.com/watch?v={{ $excercise->video_link }}" required>
                     </div>
                 </div>
                 <div class="col-md-12 block-input">
@@ -71,4 +71,15 @@
             <button type="submit" class="btn btn-submit-bottom" style="margin-top: 15px">Lưu bài viết</button>
         </div>
     </form>
+    <script>
+        $('input[name=video_link]').on('focusout', function () {
+            if (!matchYoutubeUrl($(this).val())) {
+                alert('Vui lòng nhập link youtube chính xác');
+                $('.btn-submit-bottom').attr('title', 'Bạn phải nhập đúng link youtube');
+                $('.btn-submit-bottom').attr('disabled', 'disabled');
+            } else {
+                $('.btn-submit-bottom').removeAttr('disabled', 'disabled');
+            }
+        });
+    </script>
 @endsection

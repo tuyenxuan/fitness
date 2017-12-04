@@ -28,7 +28,7 @@
                         Thời gian bắt đầu
                     </div>
                     <div class="col-md-9">
-                        <input type="text" name="start_time" class="input" required>
+                        <input type="text" name="start_time" class="input time_entry" value="15:00" required>
                     </div>
                 </div>
                 <div class="col-md-12 block-input">
@@ -36,7 +36,7 @@
                         Thời gian kết thúc
                     </div>
                     <div class="col-md-9">
-                        <input type="text" name="end_time" class="input" required>
+                        <input type="text" name="end_time" class="input time_entry" value="17:00" required>
                     </div>
                 </div>
                 <div class="col-md-12 block-input">

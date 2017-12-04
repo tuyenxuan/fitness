@@ -17,6 +17,8 @@ class UserController extends Controller
     {
         $logo = ImageSystem::where('label', 'logo')->first();
         View::share('logo', $logo);
+        $title = WebInfo::where('label', 'title')->first();
+        View::share('title', $title);
         $slides = ImageSystem::where('label', 'slide')->get();
         View::share('first_slide', $slides->shift());
         View::share('slides', $slides);

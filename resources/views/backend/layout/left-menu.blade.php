@@ -47,7 +47,7 @@
                         </li>
                     </a>
                 </div>
-            @else
+            @elseif ($actor == 'admin')
                 <div class="menu">
                     <a href="{{ route('admin_dashboard') }}">
                         <li @if(!isset($menu) || $menu == 1) class="active" @endif">

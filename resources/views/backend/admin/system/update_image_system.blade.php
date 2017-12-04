@@ -1,9 +1,9 @@
 @extends('backend.layout.index', ['actor' => 'admin', 'menu' => 5])
 @section('content')
     <div class="content-title">
-        Tạo nhạc mới
+        Cập nhật {{ $image->label }}
     </div>
-    <form action="{{ route('admin_show_update_image', ['image_id' => $image->id]) }}" method="post" enctype="multipart/form-data" >
+    <form action="{{ route('admin_action_update_image', ['image_id' => $image->id]) }}" method="post" enctype="multipart/form-data" >
         {{ csrf_field() }}
         <div class="new-report new-excercise">
             <div class="base-input">

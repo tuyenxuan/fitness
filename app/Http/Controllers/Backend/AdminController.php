@@ -17,6 +17,12 @@ use App\Model\WebInfo;
 
 class AdminController extends Controller
 {
+    function __construct()
+    {
+        $title = WebInfo::where('label', 'title')->first();
+        View::share('title', $title);
+    }
+
     public function showDasboard()
     {
         $members = User::where('level', User::MEMBER)->paginate(5);
@@ -203,7 +209,7 @@ class AdminController extends Controller
         $excercise = new Excercise();
         $excercise->title = $request->title;
         $excercise->category_id = $request->category_id;
-        $excercise->video_link = $request->video_link;
+        $excercise->video_link = explode('?v=', $request->video_link, 11)[1];
         $excercise->content = $request->content;
         $excercise->description = $request->description;
         $excercise->image = 'user/images/' . $input['imagename'];
@@ -231,7 +237,7 @@ class AdminController extends Controller
         }
         $excercise->title = $request->title;
         $excercise->category_id = $request->category_id;
-        $excercise->video_link = $request->video_link;
+        $excercise->video_link = explode('?v=', $request->video_link, 11)[1];
         $excercise->content = $request->content;
         $excercise->description = $request->description;
         $excercise->save();
@@ -340,7 +346,7 @@ class AdminController extends Controller
         $music->category_id = Category::MUSIC;
         $music->title = $request->title;
         $music->description = $request->description;
-        $music->video_link = $request->video_link;
+        $music->video_link = explode('?v=', $request->video_link, 11)[1];
         $music->image = 'user/images/' . $input['imagename'];
         $music->save();
         return redirect(route('admin_music_list'));
@@ -364,7 +370,7 @@ class AdminController extends Controller
             $music->image = 'user/images/' . $input['imagename'];
         }
         $music->title = $request->title;
-        $music->video_link = $request->video_link;
+        $music->video_link = explode('?v=', $request->video_link, 11)[1];
         $music->description = $request->description;
         $music->save();
         return redirect(route('admin_music_list'));
@@ -392,16 +398,16 @@ class AdminController extends Controller
 
     public function actionUpdateImage($image_id, Request $request)
     {
-        $image = ImageSystem::find($image_id);
+        $image_system = ImageSystem::find($image_id);
         if ($request->file('image')) {
             $image = $request->file('image');
             $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('user/images');
             $image->move($destinationPath, $input['imagename']);
-            $image->image = 'user/images/' . $input['imagename'];
+            $image_system->url = 'user/images/' . $input['imagename'];
         }
-        $image->alt = $request->alt;
-        $image->save();
+        $image_system->alt = $request->alt;
+        $image_system->save();
         return redirect(route('admin_image_system_list'));
     }
 

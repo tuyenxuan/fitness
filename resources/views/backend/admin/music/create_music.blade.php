@@ -51,4 +51,15 @@
             <button type="submit" class="btn btn-submit-bottom" style="margin-top: 15px">Lưu bài viết</button>
         </div>
     </form>
+    <script>
+        $('input[name=video_link]').on('focusout', function () {
+            if (!matchYoutubeUrl($(this).val())) {
+                alert('Vui lòng nhập link youtube chính xác');
+                $('.btn-submit-bottom').attr('title', 'Bạn phải nhập đúng link youtube');
+                $('.btn-submit-bottom').attr('disabled', 'disabled');
+            } else {
+                $('.btn-submit-bottom').removeAttr('disabled', 'disabled');
+            }
+        });
+    </script>
 @endsection

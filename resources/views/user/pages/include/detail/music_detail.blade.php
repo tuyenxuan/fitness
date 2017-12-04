@@ -15,7 +15,7 @@
     <div class="col-md-8">
         <h2>{{ $music->title }} </h2>
         <p>
-            <iframe width="700" height="400" src="{{  $music->video_link  }}"
+            <iframe width="700" height="400" src="https://www.youtube.com/embed/{{  $music->video_link  }}"
                     frameborder="0"
                     gesture="media"
                     allowfullscreen>

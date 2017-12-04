@@ -15,7 +15,7 @@
                         Ngày báo cáo
                     </td>
                     <td>
-                        {{ $report->create_date }}
+                        {{ date('d/m/Y', strtotime($report->created_at)) }}
                     </td>
                 </tr>
                 <tr>

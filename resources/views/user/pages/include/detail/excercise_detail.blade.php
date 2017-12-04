@@ -16,7 +16,7 @@
         <h2>{{ $excercise->title }} </h2>
         <p>
             <iframe width="700" height="400"
-                    src="{{ $excercise->video_link }}"
+                    src="https://www.youtube.com/embed/{{ $excercise->video_link }}"
                     frameborder="0"
                     gesture="media"
                     allowfullscreen>

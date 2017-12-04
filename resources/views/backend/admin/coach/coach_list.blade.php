@@ -24,7 +24,6 @@
                 <th>Email</th>
                 <th>Địa chỉ</th>
                 <th>Xem chi tiết</th>
-                <th>Lịch làm việc</th>
                 <th>Sửa</th>
                 <th>Xóa</th>
             </tr>
@@ -44,11 +43,6 @@
                     </td>
                     <td>
                         {{ $coach->address }}
-                    </td>
-                    <td>
-                        <a href="http://fitness.dev/">
-                            Xem chi tiết
-                        </a>
                     </td>
                     <td>
                         <a href="{{ route('admin_show_coach_detail', ['coach_id' => $coach->id]) }}">

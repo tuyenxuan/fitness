@@ -49,7 +49,7 @@
                         {{ str_limit($excercise->video_link, $limit = 25, $end = '...') }}
                     </td>
                     <td>
-                        <a href="{{ route('show_excercise_detail', ['excercise_id' => $excercise->id]) }}">
+                        <a href="{{ route('show_excercise_detail', ['excercise_id' => $excercise->id]) }}" target="_blank">
                             Xem chi tiết
                         </a>
                     </td>

@@ -12,9 +12,16 @@ use App\Model\Report;
 use App\Model\Review;
 use App\Model\Measurement;
 use App\Model\MeasurementReport;
+use App\Model\WebInfo;
 
 class MemberController extends Controller
 {
+    function __construct()
+    {
+        $title = WebInfo::where('label', 'title')->first();
+        View::share('title', $title);
+    }
+
     public function showDasboard()
     {
         $member_id = Auth::user()->id;

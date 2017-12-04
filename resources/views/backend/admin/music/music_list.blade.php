@@ -41,7 +41,7 @@
                         {{ $music->video_link }}
                     </td>
                     <td>
-                        <a href="http://fitness.dev/">
+                        <a href="{{ route('show_music_detail', ['music_id' => $music->id]) }}" target="_blank">
                             Xem chi tiết
                         </a>
                     </td>

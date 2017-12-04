@@ -1,4 +1,4 @@
-@extends('backend.layout.index', ['actor' => 'admin', 'menu' => 0])
+@extends('backend.layout.index', ['actor' => $actor, 'menu' => 0])
 @section('content')
     <div class="content-title">
         Cập nhật thông tin cá nhân
