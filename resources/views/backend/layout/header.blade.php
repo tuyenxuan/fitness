@@ -6,7 +6,7 @@
             </div>
         </a>
         <div class="header-title col-md-7">
-            <a href="{{ route('member_schedule') }}">
+            <span href="{{ route('member_home') }}">
                 @if ($actor == 'member')
                     Góc thành viên
                 @elseif ($actor == 'coach')
@@ -14,19 +14,29 @@
                 @else
                     Góc quản trị viên
                 @endif
-            </a>
+            </span>
         </div>
         <div class="header-menu-right col-md-2">
-            <a href="#" class="hidden"><i class="fa fa-sign-in" aria-hidden="true"></i> Đăng nhập</a>
+            <a href="{{ route('login') }}" class="hidden"><i class="fa fa-sign-in" aria-hidden="true"></i> Đăng nhập</a>
             <div class="dropdown">
 						<span class="dropdown-toggle btn" data-toggle="dropdown">
-							Tuyến Xuân
+							{{ Auth::user()->name }}
 							<i class="fa fa-caret-down" aria-hidden="true"></i>
 						</span>
                 <ul class="dropdown-menu">
-                    <li><a href="">Về trang chủ</a></li>
-                    <li><a href="">Quản lý tài khoản</a></li>
-                    <li><a href="">Đăng xuất</a></li>
+                    <li><a href="/">Về trang chủ</a></li>
+                    <li><a href="{{ route('profile_show') }}">Quản lý tài khoản</a></li>
+                    <li>
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>

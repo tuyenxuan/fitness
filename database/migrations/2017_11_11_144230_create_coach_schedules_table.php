@@ -17,7 +17,9 @@ class CreateCoachSchedulesTable extends Migration
             $table->increments('id');
             $table->integer('coach_id')->unsigned();
             $table->foreign('coach_id')->references('id')->on('users');
-            $table->dateTime('time');
+            $table->date('date');
+            $table->string('start_time');
+            $table->string('end_time');
             $table->text('work');
             $table->timestamps();
         });

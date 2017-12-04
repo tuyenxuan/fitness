@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'title', 'description', 'image', 'content', 'category_id'
     ];

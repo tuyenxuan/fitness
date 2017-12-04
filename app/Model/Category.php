@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    public $timestamps = false;
     const MAN = 1;
     const WOMAN = 2;
     const YOGA = 3;

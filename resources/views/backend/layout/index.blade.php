@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="backend/css/main.css">
     <script src="lib/jQuery/jquery-3.2.1.min.js"></script>
     <script src="lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script src="lib/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 <div class="container">

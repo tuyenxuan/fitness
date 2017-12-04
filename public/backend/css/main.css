@@ -68,18 +68,20 @@
     list-style: none;
 }
 
-.left-menu ul li .search-area {
+.search-area {
+    margin: 20px 40px;
+    width: 252px;
     border: 1px solid #eaaaaa;
 }
 
-.left-menu ul li input {
+.search-area input {
     width: 220px;
     float: left;
     border: 0px;
     padding: 0px 10px;
 }
 
-.left-menu ul li button {
+.search-area button {
     width: 30px;
     border: 0px;
 }
@@ -277,4 +279,36 @@ table tr:nth-child(odd) a:hover {
     clear: both;
     background: #f3e1e1;
     border: 1px solid #fff;
+}
+
+.button-add {
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    width: 150px;
+    border: 2px solid #bbc5c4;
+    background: #523c96;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin: 15px 0px;
+}
+
+.button-add:hover {
+    color: #fff;
+    background: #967062;
+}
+
+.btn-submit-bottom {
+    margin: 40px 570px;
+    background: #2e2ea2;
+    color: #fff;
+}
+
+.new-excercise .btn-submit-bottom {
+    margin: 20px 30px !important;
+}
+
+.btn-submit-bottom:hover {
+    background: blue;
+    color: #fff;
 }

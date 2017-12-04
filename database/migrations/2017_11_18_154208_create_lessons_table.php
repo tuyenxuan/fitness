@@ -15,11 +15,14 @@ class CreateLessonsTable extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('letter_id')->unsigned();
-            $table->foreign('letter_id')->references('id')->on('letters');
+            $table->string('title');
+            $table->date('date');
+            $table->integer('member_id')->unsigned();
+            $table->foreign('member_id')->references('id')->on('users');
             $table->integer('excercise_id')->unsigned();
             $table->foreign('excercise_id')->references('id')->on('excercises');
-            $table->dateTime('time');
+            $table->string('start_time');
+            $table->string('end_time');
             $table->text('description');
             $table->timestamps();
         });
