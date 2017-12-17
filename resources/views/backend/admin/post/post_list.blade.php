@@ -41,7 +41,7 @@
                         {{ $post->title }}
                     </td>
                     <td>
-                        <a href="http://fitness.dev/">
+                        <a href="{{ route('show_post_detail', ['post' => $post->id]) }}" target="_blank">
                             Xem chi tiết
                         </a>
                     </td>

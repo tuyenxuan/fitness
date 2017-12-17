@@ -13,6 +13,7 @@ use App\Model\Review;
 use App\Model\Measurement;
 use App\Model\MeasurementReport;
 use App\Model\WebInfo;
+use Illuminate\Support\Facades\DB;
 
 class MemberController extends Controller
 {
@@ -22,15 +23,68 @@ class MemberController extends Controller
         View::share('title', $title);
     }
 
+    public function selectCoach()
+    {
+        $coach_alls = User::where('level', User::COACH)->get();
+        $coachs = [];
+        $i = 0;
+        foreach ($coach_alls as $coach_all) {
+            if ($i > 4) return;
+            if (User::where('coach_id', $coach_all->id)->count() == 0) {
+                $coachs[$i++] = $coach_all;
+            }
+        }
+
+        if ($i <= 4) {
+            $coach_dbs = DB::table('users')
+                ->select('coach_id', DB::raw('count(*) as total'))
+                ->where('level', User::MEMBER)
+                ->where('coach_id', '<>', NULL)
+                ->groupBy('coach_id')
+                ->orderBy('total', 'asc')
+                ->limit(5 - $i)
+                ->get();
+
+            foreach ($coach_dbs as $coach_db) {
+                if ($i > 4) return;
+                $coachs[$i++] = User::find($coach_db->coach_id);
+            }
+        }
+
+        return view('backend.member.select_coach', ['coachs' => $coachs]);
+    }
+
+    public function createCoachMemberRelation(Request $request)
+    {
+        if (Auth::user()->level == 3) {
+            $member = Auth::user();
+            $member->coach_id = $request->coach;
+            $member->save();
+
+            return redirect(route('member_home'));
+        }
+    }
+
     public function showDasboard()
     {
         $member_id = Auth::user()->id;
-        $today = date('Y-m-d', time());
-        $lesson_todays = Lesson::where('member_id', $member_id)->where('date', date('Y-m-d', time()))->get();
-        $lesson_yesterdays = Lesson::where('member_id', $member_id)->where('date', date('Y-m-d', time() - 86400))->get();
-        $lesson_tomorrows = Lesson::where('member_id', $member_id)->where('date', date('Y-m-d', time() + 86400))->get();
+        $lesson_3days_agos = Lesson::where('member_id', $member_id)->where('start_date', '<=', date('Y-m-d', time() - 3 * 86400))->where('end_date', '>=', date('Y-m-d', time() - 3 * 86400))->get();
+        $lesson_2days_agos = Lesson::where('member_id', $member_id)->where('start_date', '<=', date('Y-m-d', time() - 2 * 86400))->where('end_date', '>=', date('Y-m-d', time() - 2 * 86400))->get();
+        $lesson_1days_agos = Lesson::where('member_id', $member_id)->where('start_date', '<=', date('Y-m-d', time() - 1 * 86400))->where('end_date', '>=', date('Y-m-d', time() - 1 * 86400))->get();
+        $lesson_todays = Lesson::where('member_id', $member_id)->where('start_date', '<=', date('Y-m-d', time()))->where('end_date', '>=', date('Y-m-d', time()))->get();
+        $lesson_next_1days = Lesson::where('member_id', $member_id)->where('start_date', '<=', date('Y-m-d', time() + 1 * 86400))->where('end_date', '>=', date('Y-m-d', time() + 1 * 86400))->get();
+        $lesson_next_2days = Lesson::where('member_id', $member_id)->where('start_date', '<=', date('Y-m-d', time() + 2 * 86400))->where('end_date', '>=', date('Y-m-d', time() + 2 * 86400))->get();
+        $lesson_next_3days = Lesson::where('member_id', $member_id)->where('start_date', '<=', date('Y-m-d', time() + 3 * 86400))->where('end_date', '>=', date('Y-m-d', time() + 3 * 86400))->get();
 
-        return view('backend.member.home', ['lesson_todays' => $lesson_todays, 'lesson_yesterdays' => $lesson_yesterdays, 'lesson_tomorrows' => $lesson_tomorrows]);
+        return view('backend.member.home', [
+            'lesson_3days_agos' => $lesson_3days_agos ?? [],
+            'lesson_2days_agos' => $lesson_2days_agos ?? [],
+            'lesson_1days_agos' => $lesson_1days_agos ?? [],
+            'lesson_todays' => $lesson_todays ?? [],
+            'lesson_next_1days' => $lesson_next_1days ?? [],
+            'lesson_next_2days' => $lesson_next_2days ?? [],
+            'lesson_next_3days' => $lesson_next_3days ?? []
+        ]);
     }
 
     public function showReport()
@@ -60,9 +114,9 @@ class MemberController extends Controller
 
     public function showCreateReport()
     {
-        $coachs = User::where('level', User::COACH)->get();
+        $coach = User::find(Auth::user()->coach_id);
         $measurements = Measurement::all();
-        return view('backend.member.create_report', ['coachs' => $coachs, 'measurements' => $measurements]);
+        return view('backend.member.create_report', ['coach' => $coach, 'measurements' => $measurements]);
     }
 
     public function createReport(Request $request)

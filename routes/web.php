@@ -43,6 +43,10 @@ Route::group(['prefix' => '/account', 'middleware' => 'auth'], function () {
     Route::post('update', 'Backend\AccountController@actionUpdateProfile')->name('action_update_user_info');
 });
 
+Route::get('select_coach', 'Backend\MemberController@selectCoach')->name('member_select_coach');
+
+Route::post('create_relationship', 'Backend\MemberController@createCoachMemberRelation')->name('member_create_relationship');
+
 Route::group(['prefix' => '/member', 'middleware' => 'member'], function() {
     Route::get('', 'Backend\MemberController@showDasboard')->name('member_home');
 

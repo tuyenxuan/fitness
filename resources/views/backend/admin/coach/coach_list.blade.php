@@ -19,23 +19,24 @@
         <table>
             <tr>
                 <th>Họ và tên</th>
-                <th>Giới tính</th>
-                <th>Ngày sinh</th>
+                <th><center>Giới tính</center></th>
+                <th><center>Ngày sinh</center></th>
                 <th>Email</th>
                 <th>Địa chỉ</th>
-                <th>Xem chi tiết</th>
-                <th>Sửa</th>
-                <th>Xóa</th>
+                <th><center>Số thành viên</center></th>
+                <th><center>Xem chi tiết</center></th>
+                <th><center>Sửa</center></th>
+                <th><center>Xóa</center></th>
             </tr>
             @foreach ($coachs as $coach)
                 <tr>
                     <td>
                         {{ $coach->name }}
                     </td>
-                    <td>
+                    <td align="center">
                         {{ $coach->gender ? 'nam' : 'nữ' }}
                     </td>
-                    <td>
+                    <td align="center">
                         {{ $coach->year_of_birth }}
                     </td>
                     <td>
@@ -44,15 +45,18 @@
                     <td>
                         {{ $coach->address }}
                     </td>
-                    <td>
+                    <td align="center">
+                        {{ App\Model\User::where('coach_id', $coach->id)->count() }}
+                    </td>
+                    <td  align="center">
                         <a href="{{ route('admin_show_coach_detail', ['coach_id' => $coach->id]) }}">
                             Xem chi tiết
                         </a>
                     </td>
-                    <td>
+                    <td align="center">
                         <a href="{{ route('admin_show_update_coach', ['coach_id' => $coach->id]) }}"><span class="fa fa-edit"></span></a>
                     </td>
-                    <td >
+                    <td align="center">
                         <a class="delete" style="cursor: pointer"><input type="hidden" class="del_url" value="{{ route('admin_action_delete_coach', ['coach_id' => $coach->id]) }}"><span class="fa fa-remove"></span></a>
                     </td>
                 </tr>

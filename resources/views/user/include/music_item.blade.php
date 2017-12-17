@@ -4,7 +4,7 @@
             {{ str_limit($music->title, $limit = 50, $end = '...') }}
         </div>
         <div class="music-img col-md-4">
-            <img src="{{ $music->image }}" alt="">
+            <img src="{{ $music->image }}" alt="{{ $music->title }}" width="100px" height="70px">
         </div>
     </div>
 </a>

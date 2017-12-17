@@ -60,7 +60,7 @@ class CoachController extends Controller
 
     public function showMemberList()
     {
-        $members = User::where('level', User::MEMBER)->paginate(5);
+        $members = User::where('level', User::MEMBER)->where('coach_id', Auth::user()->id)->paginate(5);
 
         return view('backend.coach.member.member_list', ['members' => $members]);
     }
@@ -75,7 +75,7 @@ class CoachController extends Controller
     public function showMemberDetail($member_id)
     {
         $member = User::find($member_id);
-        $member_schedules = Lesson::where('member_id', $member_id)->orderBy('date', 'desc')->paginate(5);
+        $member_schedules = Lesson::where('member_id', $member_id)->orderBy('start_date', 'desc')->paginate(5);
 
         return view('backend.coach.member.member_detail', ['member' => $member, 'member_schedules' => $member_schedules]);
     }
@@ -92,7 +92,8 @@ class CoachController extends Controller
     {
         $member_schedule = new Lesson();
         $member_schedule->title = $request->title;
-        $member_schedule->date = $request->date;
+        $member_schedule->start_date = $request->start_date;
+        $member_schedule->end_date = $request->end_date;
         $member_schedule->member_id = $member_id;
         $member_schedule->excercise_id = $request->excercise_id;
         $member_schedule->start_time = $request->start_time;

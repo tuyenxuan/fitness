@@ -15,6 +15,11 @@
     <div class="col-md-8">
         <h2>{{ $excercise->title }} </h2>
         <p>
+            {!! $excercise->content !!}
+        </p>
+        <br>
+        <br>
+        <p>
             <iframe width="700" height="400"
                     src="https://www.youtube.com/embed/{{ $excercise->video_link }}"
                     frameborder="0"

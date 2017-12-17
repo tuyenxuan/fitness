@@ -1,7 +1,7 @@
 @extends('backend.layout.index', ['actor' => 'coach', 'menu' => 3])
 @section('content')
     <div class="content-title">
-        Danh sách thành viên
+        Danh Sách TV
     </div>
     <div class="col-md-8"></div>
     <div class="col-md-4">

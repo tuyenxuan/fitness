@@ -10,4 +10,9 @@ class Lesson extends Model
     protected $fillable = [
         'user_id', 'date', 'excercise_id', 'time', 'description'
     ];
+
+    public function excercise()
+    {
+        return $this->belongsTo('App\Model\Excercise', 'excercise_id', 'id');
+    }
 }

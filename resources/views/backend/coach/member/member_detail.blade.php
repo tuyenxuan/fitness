@@ -61,7 +61,8 @@
     <div class="report-content">
         <table>
             <tr>
-                <th>Ngày</th>
+                <th>Ngày bắt đầu</th>
+                <th>Ngày kết thúc</th>
                 <th>Nội dung</th>
                 <th>Chú ý</th>
                 <th>Bài tập</th>
@@ -69,16 +70,19 @@
             @foreach ($member_schedules as $member_schedule)
                 <tr>
                     <td>
-                        29/11/2017
+                        {{ date('d/m/Y', strtotime($member_schedule->start_date)) }}
                     </td>
                     <td>
-                        Bài tập ngực
+                        {{ date('d/m/Y', strtotime($member_schedule->end_date)) }}
                     </td>
-                    <td>
-                        Tập đều đặn không quá sức
+                    <td title="{{ $member_schedule->title }}">
+                        {{ str_limit($member_schedule->title, $limit = 25, $end = '...') }}
                     </td>
-                    <td>
-                        Bài tập ngực dành cho nam
+                    <td title="{{ $member_schedule->description }}">
+                        {{ str_limit($member_schedule->description, $limit = 25, $end = '...') }}
+                    </td>
+                    <td title="{{ $member_schedule->excercise->title }}">
+                        {{ str_limit($member_schedule->excercise->title, $limit = 40, $end = '...') }}
                     </td>
                 </tr>
             @endforeach

@@ -1,7 +1,7 @@
 @extends('backend.layout.index', ['actor' => 'admin', 'menu' => 1])
 @section('content')
     <div class="content-title">
-        Danh sách thành viên
+        Danh sách TV
     </div>
     <div class="col-md-8">
         <a href="{{ route('admin_show_create_member') }}" class="btn button-add">Thêm member</a>

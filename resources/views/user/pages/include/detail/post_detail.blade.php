@@ -14,9 +14,10 @@
 <div class="content col-md-12" style="margin-top: 20px;">
     <div class="col-md-8">
         <h2>{{ $post->title }} </h2>
-        <p>
-            {{ $post->content }}
-        </p>
+        <br>
+        <div style="margin: 10px 10px">
+            {!!  $post->content !!}
+        </div>
 
     </div>
     <div class="col-md-4">

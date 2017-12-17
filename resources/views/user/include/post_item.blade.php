@@ -1,7 +1,7 @@
 <a href="{{ route('show_post_detail', $post->id) }}">
     <div class="post-block col-md-6">
         <div class="post-img col-md-5">
-            <img src="{{ $post->image }}" alt="">
+            <img src="{{ $post->image }}" alt="{{ $post->title }}"  width="218px" height="150px">
         </div>
         <div class="post-content col-md-7">
             <div class="post-title">

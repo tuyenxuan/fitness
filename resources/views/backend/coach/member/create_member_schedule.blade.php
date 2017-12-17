@@ -37,10 +37,18 @@
                 </div>
                 <div class="col-md-12 block-input">
                     <div class="col-md-3 title">
-                        Ngày
+                        Từ ngày
                     </div>
                     <div class="col-md-9">
-                        <input type="date" name="date" class="input" required>
+                        <input type="date" name="start_date" class="input" required>
+                    </div>
+                </div>
+                <div class="col-md-12 block-input">
+                    <div class="col-md-3 title">
+                        Đến ngày
+                    </div>
+                    <div class="col-md-9">
+                        <input type="date" name="end_date" class="input" required>
                     </div>
                 </div>
                 <div class="col-md-12 block-input">

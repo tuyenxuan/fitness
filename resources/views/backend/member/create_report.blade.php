@@ -28,11 +28,8 @@
                         Huấn luyện viên
                     </div>
                     <div class="col-md-9">
-                        <select name="coach_id" id="" class="input" required>
-                            @foreach ($coachs as $coach)
-                                <option value="{{ $coach->id }}">{{ $coach->name }}</option>
-                            @endforeach
-                        </select>
+                        <input type="hidden" name="coach_id" value="{{ $coach->id }}">
+                        <input style="cursor: not-allowed" value="{{ $coach->name }}" class="input" readonly></input>
                     </div>
                 </div>
                 <div class="col-md-12 block-input">

@@ -18,6 +18,9 @@ class MemberMiddleware
     {
         if (Auth::check()) {
             if ((Auth::user()->level == 3)) {
+                if (is_null(Auth::user()->coach_id)) {
+                    return redirect(route('member_select_coach'));
+                }
                 return $next($request);
             } elseif ((Auth::user()->level == 1)) {
                 return redirect('/admin');

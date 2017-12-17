@@ -33,7 +33,7 @@
                     </a>
                     <a href="{{ route('coach_member_list') }}">
                         <li @if($menu == 3) class="active" @endif>
-                            Danh sách thành viên
+                            Danh sách TV
                         </li>
                     </a>
                     <a href="{{ route('coach_review_list') }}">
@@ -81,7 +81,7 @@
                     </a>
                     <a href="{{ route('admin_system_infos') }}">
                         <li @if($menu == 7) class="active" @endif>
-                            QL thông tin hệ thống
+                            QL hệ thống
                         </li>
                     </a>
                 </div>

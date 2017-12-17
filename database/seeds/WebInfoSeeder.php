@@ -48,6 +48,13 @@ class WebInfoSeeder extends Seeder
                 'url' => 'https://www.youtube.com/channel/UC2s9lXvxZ5oNT-GgVdKitYA',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ], [
+                'label' => 'title',
+                'title' => 'Thẻ hình 24h',
+                'content' => 'Thẻ hình 24h',
+                'url' => '',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
         ]);
     }

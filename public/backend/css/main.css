@@ -162,6 +162,7 @@
 
 .lesson-block {
     padding: 10px 10px;
+    font-size: 13px !important;
 }
 
 .lesson-block .lesson {
@@ -189,7 +190,7 @@
 }
 
 .lesson-block .lesson .lesson-content {
-    font-size: 16px;
+    font-size: 14px;
     margin: 10px 10px;
     height: 90px;
 }
@@ -265,7 +266,7 @@ table tr:nth-child(odd) a:hover {
 }
 
 .new-report .block-input .input {
-    width: 400px;
+    width: 350px;
 }
 
 .new-report .unit {
@@ -311,4 +312,9 @@ table tr:nth-child(odd) a:hover {
 .btn-submit-bottom:hover {
     background: blue;
     color: #fff;
+}
+
+.box-schedule {
+    width: 14%;
+    float: left;
 }
